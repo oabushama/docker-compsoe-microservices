@@ -1,0 +1,20 @@
+version: '3'
+services:
+  product-search-service:
+    build: ./product-search-app
+    ports:
+      - 8000:5000
+  product-shipping-service:
+    build: ./product-shipping-app
+    ports:
+      - 9000:5000
+  best-sellers-api:
+    build: ./best-sellers-api
+    ports:
+      - 10000:3000
+  website-app:
+    build: ./web-app
+    ports:
+      - 127.0.0.1:8080:80
+    volumes:
+      - ./web-app/public-html:/usr/local/apache2/htdocs/

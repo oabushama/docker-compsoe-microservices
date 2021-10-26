@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <title>The Cool webstore! | Product Search</title>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container" id="main-content">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <div class="navbar-item">
+                        <h1>The scalable furniture webstore</h1>
+                    </div>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">
+                            Home
+                        </a>
+
+                        <a class="navbar-item" href="./product.html">
+                            Product Search
+                        </a>
+
+                        <a class="navbar-item" href="./order.html">
+                            Order Status
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <input type="text" id="search-box" name="search" placeholder="Search..">
+            <input type="submit" id="search-btn" value="Search" onClick="doSearch()">
+
+            <script>
+                function doSearch() {
+                    var searchTerm = document.getElementById("search-box").value;
+                    if (searchTerm.trim().length == 0) return;
+                    // Fetch the search result from the API
+                    fetch('http://0.0.0.0:8000/product?name=' + escape(searchTerm))
+                        .then(function (response) {
+                            return response.json();
+                        })
+                        .then(function (result) {
+                            // create HTML Elements to show the result
+                            var h2Element = document.createElement("h2");
+                            h2Element.appendChild(document.createTextNode("Product:" +
+                                result.name));
+                            var h3Element = document.createElement("h3");
+                            h3Element.appendChild(document.createTextNode("Price: $" +
+                                result.price));
+
+                            document.getElementById("main-content").appendChild(h2Element);
+                            document.getElementById("main-content").appendChild(h3Element);
+                        });
+
+                }
+
+
+            </script>
+        </div>
+    </section>
+
+</body>
+
+</html>

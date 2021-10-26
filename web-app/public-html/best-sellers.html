@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <title>The Scalable furniture webstore! | Best Sellers</title>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container" id="main-content">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <div class="navbar-item">
+              <h1>The scalable furniture webstore</h1>
+            </div>
+          </div>
+
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item" href="/"> Home </a>
+
+              <a class="navbar-item" href="./product.html"> Product Search </a>
+
+              <a class="navbar-item" href="./order.html"> Order Status </a>
+
+              <a class="navbar-item" href="./best-sellers.html">
+                Best Sellers
+              </a>
+            </div>
+          </div>
+        </nav>
+        <template>
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img class="itemImage" src="" alt="" />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <h3></h3>
+                <h4></h4>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <script>
+            console.log("In best sellers script");
+          window.onload = function () {
+              console.log("GET http://0.0.0.0:10000/best-sellers");
+            // Fetch the search result from the API
+            fetch("http://0.0.0.0:10000/best-sellers")
+              .then(function (response) {
+                console.log("Got response");
+                console.log(response);
+                return response.json();
+              })
+              .then(function (results) {
+                  console.log(results);
+                // create HTML Elements to show the result
+                var temp = document.getElementsByTagName("template")[0];
+                results.forEach((element) => {
+                  var clon = temp.content.cloneNode(true);
+                  clon.getElementsByTagName("img")[0].src = element.image;
+                  clon.getElementsByTagName("img")[0].alt = element.item;
+                  clon.getElementsByTagName("h3")[0].innerText = element.item;
+                  clon.getElementsByTagName("h4")[0].innerText = element.price;
+                  document.body.appendChild(clon);
+                });
+              })
+              .catch(function(e){
+                  console.log(e);
+              });
+          };
+        </script>
+      </div>
+    </section>
+  </body>
+</html>

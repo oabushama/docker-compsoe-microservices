@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <title>The scalable furniture webstore| Order Status</title>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container" id="main-content">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <div class="navbar-item">
+                        <h1>The scalable furniture webstore</h1>
+                    </div>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" href="/">
+                            Home
+                        </a>
+
+                        <a class="navbar-item" href="./product.html">
+                            Product Search
+                        </a>
+
+                        <a class="navbar-item" href="./order.html">
+                            Order Status
+                        </a>
+                        <a class="navbar-item" href="./best-sellers.html">
+                            Best Sellers
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <script>
+                var orderId = Math.floor(Math.random() * 100000);
+                var testURL = window.location.href.split('?')[0] + "?id=" + orderId;
+                document.write('<h1 class="title">My orders:</h1>');
+                document.write("<a href=" + '"' + testURL + '">Order #' + orderId + "</a>");
+
+                window.onload = function () {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var id = urlParams.get('id');
+                    if (!isNaN(parseInt(id))) {
+                        // Fetch the search result from the API
+                        fetch('http://0.0.0.0:9000/shipping?id=' + id)
+                            .then(function (response) {
+                                return response.json();
+                            })
+                            .then(function (result) {
+                                // create HTML Elements to show the result
+                                var h2Element = document.createElement("h2");
+                                h2Element.appendChild(document.createTextNode("Content:" +
+                                    result.content));
+                                var h3Element = document.createElement("h3");
+                                h3Element.appendChild(document.createTextNode("Status: " +
+                                    result.status));
+
+                                document.getElementById("main-content").appendChild(h2Element);
+                                document.getElementById("main-content").appendChild(h3Element);
+                            });
+                    }
+                }
+            </script>
+        </div>
+    </section>
+</body>
+
+</html>
