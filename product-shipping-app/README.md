@@ -12,7 +12,7 @@ An example order shipping status RESTful API in Java using the Spring framework.
 
 ```bash
 docker build -t product-shipping-service:latest .
-docker run -d -p 9000:5000 product-search-service:latest
+docker run -d -p 9000:5000 product-shipping-service:latest
 ```
 
 To use the API:
