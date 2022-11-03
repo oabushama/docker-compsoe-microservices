@@ -8,19 +8,35 @@ An example order shipping status RESTful API in Java using the Spring framework.
 
 ### Building
 
-- If you wish to change the host and port number, edit `src/main/resources/application.properties`
-- To build the app, run:
+#### To build and run via Docker:
+
+```bash
+docker build -t product-shipping-service:latest .
+docker run -d -p 9000:5000 product-search-service:latest
+```
+
+To use the API:
+
+```bash
+$ curl http://127.0.0.1:9000/shipping?id=12345
+```
+
+#### To build and run the app from source without Docker, run:
 
 ```bash
 $ mvn package
+$ java -jar target/product-shipping-service-0.1.0.jar
 ```
 
-### Running
+To use the API:
 
 ```bash
-$ java -jar target/product-shipping-service-0.1.0.jar
-$ curl http://0.0.0.0:5000/shipping?id=12345
+$ curl http://127.0.0.1:5000/shipping?id=12345
 ```
+
+### Usage
+Send an HTTP request to the shipping/ end point with an id parameter as shown above.
+
 You should receive a response in JSON like:
 
 ```json
