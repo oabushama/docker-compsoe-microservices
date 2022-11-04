@@ -1,11 +1,7 @@
-### Building the Container Image
+### Building and Running 
 
+To build the container image and run the Docker container, run:
 ```bash
 $ docker build -t my-web-app .
-```
-
-### Running the Docker Container
-
-```bash
-$ docker run -it --name my-web-app-container -p 127.0.0.1:8080:80 my-web-app
+$ docker run -dit --name my-web-app-container -p 8080:80 my-web-app
 ```
