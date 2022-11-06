@@ -1,11 +1,13 @@
 package sa.edu.kau.fcit.cpit490.productshippingapi.model;
 
 public class Shipping {
+    private long id;
+    private String content;
+    private String status;
 
-    private final long id;
-    private final String content;
-    private final String status;
-
+    public Shipping(){
+        super();
+    }
     public Shipping(long id, String content, String status) {
         this.id = id;
         this.content = content;

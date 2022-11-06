@@ -2,10 +2,13 @@ package sa.edu.kau.fcit.cpit490.productsearchapi.model;
 
 public class Product {
 
-    private final long id;
-    private final String name;
-    private final double price;
+    private long id;
+    private String name;
+    private double price;
 
+    public Product(){
+        super();
+    }
     public Product(long id, String name, double price) {
         this.id = id;
         this.name = name;
