@@ -1,4 +1,4 @@
-package product;
+package sa.edu.kau.fcit.cpit490.productsearchapi.model;
 
 public class Product {
 

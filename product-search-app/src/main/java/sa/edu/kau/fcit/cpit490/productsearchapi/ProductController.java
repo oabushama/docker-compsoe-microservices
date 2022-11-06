@@ -1,12 +1,10 @@
-package product;
+package sa.edu.kau.fcit.cpit490.productsearchapi;
 
 import java.text.DecimalFormat;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import sa.edu.kau.fcit.cpit490.productsearchapi.model.Product;
 
 import java.util.Random;
 
@@ -25,9 +23,8 @@ public class ProductController {
   }
 
   @CrossOrigin(origins = "*", allowedHeaders = "*")
-  @RequestMapping("/product")
+  @RequestMapping(method= RequestMethod.GET, path="/product")
   public Product product(@RequestParam(value = "name", defaultValue = "sofa", required = false) String name) {
-
     return new Product(counter.incrementAndGet(), name, generateRandomPrice());
   }
 }
