@@ -1,2 +1,3 @@
 FROM httpd:2-alpine
-COPY ./public-html/ /usr/local/apache2/htdocs/
+# The local directrory will be mounted as a volume
+#COPY ./public-html/ /usr/local/apache2/htdocs/
