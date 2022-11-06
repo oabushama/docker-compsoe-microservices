@@ -1,4 +1,4 @@
-package shipping;
+package sa.edu.kau.fcit.cpit490.productshippingapi.model;
 
 public class Shipping {
 
@@ -24,3 +24,4 @@ public class Shipping {
         return status;
     }
 }
+
