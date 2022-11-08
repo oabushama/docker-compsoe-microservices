@@ -1,5 +1,7 @@
 package sa.edu.kau.fcit.cpit490.productsearchapi;
 
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import java.text.DecimalFormat;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -22,9 +24,11 @@ public class ProductController {
     return Double.parseDouble(df.format(price));
   }
 
+   // The MappingJackson2HttpMessageConverter should handle the conversion of the Product object to JSON under the hood.
+  // This is possible because the Jackson 2 dependency is present in the classpath.
   @CrossOrigin(origins = "*", allowedHeaders = "*")
-  @RequestMapping(method= RequestMethod.GET, path="/product")
-  public Product product(@RequestParam(value = "name", defaultValue = "sofa", required = false) String name) {
-    return new Product(counter.incrementAndGet(), name, generateRandomPrice());
+  @RequestMapping(path="/product", method= RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Product> product(@RequestParam(value = "name", defaultValue = "sofa", required = false) String name) {
+    return ResponseEntity.ok(new Product(counter.incrementAndGet(), name, generateRandomPrice()));
   }
 }
