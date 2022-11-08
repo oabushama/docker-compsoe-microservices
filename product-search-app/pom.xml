@@ -14,7 +14,7 @@
 	<name>product-search-api</name>
 	<description>A simple product search RESTful API in Java using the Spring framework.</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
