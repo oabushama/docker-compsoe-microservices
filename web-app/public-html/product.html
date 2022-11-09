@@ -46,7 +46,7 @@
                     var searchTerm = document.getElementById("search-box").value;
                     if (searchTerm.trim().length == 0) return;
                     // Fetch the search result from the API
-                    fetch('http://0.0.0.0:8000/product?name=' + escape(searchTerm))
+                    fetch('http://localhost:8000/product?name=' + escape(searchTerm))
                         .then(function (response) {
                             return response.json();
                         })

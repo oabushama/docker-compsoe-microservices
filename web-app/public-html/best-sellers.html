@@ -57,7 +57,7 @@
             console.log("In best sellers script");
           window.onload = function () {
             // Fetch the search result from the API
-            fetch("http://0.0.0.0:10000/best-sellers")
+            fetch("http://localhost:10000/best-sellers")
               .then(function (response) {
                 return response.json();
               })

@@ -24,7 +24,7 @@ $ curl http://localhost:8000/product?name=Espresso%20Machine
 
 ```bash
 $ mvn package
-$ java -jar target/product-search-service-0.1.0.jar
+$ java -jar target/product-search-api-0.1.0.jar
 ```
 
 To use the API:

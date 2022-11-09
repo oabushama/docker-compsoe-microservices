@@ -48,7 +48,7 @@
                     var id = urlParams.get('id');
                     if (!isNaN(parseInt(id))) {
                         // Fetch the search result from the API
-                        fetch('http://0.0.0.0:9000/shipping?id=' + id)
+                        fetch('http://localhost:9000/shipping?id=' + id)
                             .then(function (response) {
                                 return response.json();
                             })
